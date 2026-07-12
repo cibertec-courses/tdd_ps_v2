@@ -31,5 +31,27 @@ class CarritoComprasTest {
         assertEquals(0.0, subtotal);
     }
 
+    /// EL total con 10% de descuento se calcula correctamente
+    @Test
+    @DisplayName("El total con 10% de descuento se calcula correctamente")
+    void deberiaAplicarElDescuentoSobreElSubtotal(){
+        carrito.agregarProductos(100.0, 2);
+        double total = carrito.calcularTotalConDescuento(10);
+        assertEquals(180.0, total);
+    }
+
+    /// EL carrito cuenta con la cantidad de items agregados
+    @Test
+    @DisplayName("El carrito cuenta con la cantidad de items agregados")
+    void deberiaContarItemsAgregados(){
+        carrito.agregarProductos(40.0, 1);
+        carrito.agregarProductos(50.0, 2);
+        carrito.agregarProductos(60.0, 3);
+
+        int items = carrito.contarItems();
+
+        assertEquals(3, items);
+
+    }
 
 }
