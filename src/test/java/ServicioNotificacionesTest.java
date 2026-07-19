@@ -30,6 +30,13 @@ class ServicioNotificacionesTest {
     }
 
     /// Con nota desaprobatoria envia el mensaje de lamento
+    @Test
+    @DisplayName("Con nota desaprobatoria envia el mensaje de lamento")
+    void deberiaEnviarLamentoConUnanotaDesaprobada(){
+        String correo="jose@cibertec.edu.pe";
+        servicio.notificarResultado(correo, 10.0);
 
+        verify(enviadorFalso).enviar(correo, "Lo sentimos, tu no fue 10.0");
+    }
 
 }
